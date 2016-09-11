@@ -26,29 +26,29 @@ import tensorflow as tf
 import pandas as pd
 from sklearn.cross_validation import train_test_split
 
-FILE_PATH = '~/data.csv'                                        # Path to .csv dataset
+FILE_PATH = '~/data.csv'                                # Path to .csv dataset
 raw_data = pd.read_csv(FILE_PATH)						# Open raw .csv
 
 print("Raw data loaded successfully...\n")
 #------------------------------------------------------------------------------
 # Variables
 
-Y_LABEL = 'y'                                   			# Name of the variable to be predicted
+Y_LABEL = 'y'                                   		    	# Name of the variable to be predicted
 KEYS = [i for i in raw_data.keys().tolist() if i != Y_LABEL]	# Name of predictors
 N_INSTANCES = raw_data.shape[0]                     			# Number of instances
 N_INPUT = raw_data.shape[1] - 1                     			# Input size
 N_CLASSES = raw_data[Y_LABEL].unique().shape[0]     			# Number of classes (output size)
-TEST_SIZE = 0.1                                    			# Test set size (% of train set)
+TEST_SIZE = 0.1                                    			    # Test set size (% of train set)
 TRAIN_SIZE = int(N_INSTANCES * (1 - TEST_SIZE))     			# Train size
 LEARNING_RATE = 0.001                               			# Learning rate
 TRAINING_EPOCHS = 300                               			# Number of epochs
 BATCH_SIZE = 100                                    			# Batch size
 DISPLAY_STEP = 1                                    			# Display progress each x epochs
-HIDDEN_SIZE = 200	                                   		# Number of hidden neurons
+HIDDEN_SIZE = 200	                                   	    	# Number of hidden neurons
 ACTIVATION_FUNCTION_INLAYER = tf.nn.tanh                        # In-layer act fct
 ACTIVATION_FUNCTION_OUT = tf.nn.tanh                            # Last layer act fct
 STDDEV = 0.1                                        			# Standard deviation (for weights random init)
-RANDOM_STATE = 42									# Random state for train_test_split
+RANDOM_STATE = 100 									            # Random state for train_test_split
 
 print("Variables loaded successfully...\n")
 print("Number of predictors \t%s" %(N_INPUT))
